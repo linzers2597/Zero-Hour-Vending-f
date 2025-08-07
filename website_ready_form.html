@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Hour Vending - Business Proposal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        
+        @media print {
+            body { margin: 0; }
+            .page { page-break-after: always; margin: 0; }
+            .animated { animation: none !important; }
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: linear-gradient(145deg, #1e293b 0%, #334155 50%, #475569 100%);
+            border-radius: 16px;
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.3),
+                0 10px 10px -5px rgba(0, 0, 0, 0.2),
+                0 0 40px rgba(0, 217, 255, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        .header {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo-section {
+            margin-bottom: 32px;
+        }
+        
+        .japanese-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 2.2em;
+            font-weight: 400;
+            color: #00d9ff;
+            text-shadow: 
+                0 0 10px rgba(0, 217, 255, 0.3),
+                0 0 20px rgba(0, 217, 255, 0.2);
+            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+            animation: subtleGlow 4s ease-in-out infinite alternate;
+            line-height: 1.3;
+        }
+        
+        .company-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #ff0080 0%, #00d9ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+        
+        @keyframes subtleGlow {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(0, 217, 255, 0.3),
+                    0 0 20px rgba(0, 217, 255, 0.2);
+            }
+            100% {
+                text-shadow: 
+                    0 0 15px rgba(0, 217, 255, 0.4),
+                    0 0 25px rgba(0, 217, 255, 0.25);
+            }
+        }
+        
+        .tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2em;
+            margin: 24px 0 0 0;
+            color: #cbd5e1;
+            font-weight: 400;
+            letter-spacing: 0.025em;
+        }
+        
+        .content {
+            padding: 48px 40px;
+            background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.75em;
+            color: #f1f5f9;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid transparent;
+            background: linear-gradient(90deg, #00d9ff 0%, #ff0080 100%) bottom/100% 2px no-repeat;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 40px;
+            height: 4px;
+            background: linear-gradient(90deg, #00d9ff 0%, #ff0080 100%);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(145deg, #374151 0%, #4b5563 100%);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00d9ff 0%, #ff0080 100%);
+            border-radius: 12px 12px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 15px 35px -5px rgba(0, 0, 0, 0.3),
+                0 8px 15px -3px rgba(0, 217, 255, 0.2);
+            border-color: rgba(0, 217, 255, 0.4);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00d9ff 0%, #ff0080 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5));
+        }
+        
+        .feature-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            letter-spacing: -0.025em;
+        }
+        
+        .feature-card p {
+            color: #cbd5e1;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .machine-selection-section {
+            background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .machine-selection-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00d9ff 0%, #ff0080 100%);
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .machines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        
+        .machine-option {
+            background: linear-gradient(145deg, #1f2937 0%, #374151 100%);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            border: 2px solid #4b5563;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .machine-option:hover {
+            border-color: #00d9ff;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 10px 25px -3px rgba(0, 217, 255, 0.2),
+                0 4px 6px -2px rgba(0, 217, 255, 0.1);
+        }
+        
+        .machine-option.selected {
+            border-color: #ff0080;
+            background: linear-gradient(145deg, #3f1339 0%, #581c4f 100%);
+            box-shadow: 
+                0 10px 25px -3px rgba(255, 0, 128, 0.3),
+                0 4px 6px -2px rgba(255, 0, 128, 0.2);
+        }
+        
+        .machine-option.selected::before {
+            content: '✓';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            background: #ff0080;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .machine-visual {
+            width: 100%;
+            height: 160px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .machine-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #f1f5f9;
+            font-size: 1.1em;
+            letter-spacing: -0.025em;
+        }
+        
+        .machine-checkbox {
+            margin-top: 16px;
+        }
+        
+        .machine-checkbox input[type="checkbox"] {
+            transform: scale(1.4);
+            margin-right: 8px;
+            accent-color: #ff0080;
+        }
+        
+        .machine-checkbox label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: #cbd5e1;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+        
+        .benefits-section, .commission-section, .approval-section {
+            background: linear-gradient(145deg, #374151 0%, #4b5563 100%);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            margin: 32px 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: linear-gradient(145deg, #1f2937 0%, #374151 100%);
+            border-radius: 8px;
+            border-left: 4px solid #00d9ff;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-item:hover {
+            background: linear-gradient(145deg, #111827 0%, #1f2937 100%);
+            border-left-color: #ff0080;
+            transform: translateX(5px);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                -5px 0 15px rgba(255, 0, 128, 0.2);
+        }
+        
+        .benefit-icon {
+            color: #00d9ff;
+            font-size: 1.4em;
+            margin-right: 16px;
+            margin-top: 2px;
+            filter: drop-shadow(0 0 5px rgba(0, 217, 255, 0.5));
+        }
+        
+        .benefit-item strong {
+            color: #f1f5f9;
+        }
+        
+        .benefit-item div {
+            color: #cbd5e1;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5em;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: #00d9ff;
+        }
+        
+        .contact-description {
+            color: #9ca3af;
+            margin-bottom: 24px;
+            font-size: 1.1em;
+        }
+        
+        .email {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3em;
+            color: #ff0080;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            transition: all 0.3s ease;
+        }
+        
+        .email:hover {
+            color: #00d9ff;
+            text-decoration: underline;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        
+        .highlight-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1em;
+            color: #0c4a6e;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 8px;
+            transform: scale(1.2);
+            accent-color: #00d9ff;
+        }
+
+        /* Form input styles */
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #4b5563;
+            border-radius: 6px;
+            background: #1f2937;
+            color: #f1f5f9;
+            font-size: 1em;
+            font-family: 'Inter', sans-serif;
+            margin-top: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: #00d9ff;
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+        }
+
+        .form-label {
+            color: #f1f5f9;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 0.95em;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #00d9ff 0%, #ff0080 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            .header {
+                padding: 40px 20px;
+            }
+            .content {
+                padding: 24px 20px;
+            }
+            .japanese-text {
+                font-size: 1.8em;
+            }
+            .company-name {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="japanese-text">ゼロアワー<br>ベンディング</div>
+                </div>
+                <h1 class="company-name">ZERO HOUR VENDING</h1>
+                <p class="tagline">Advanced AI-Powered Vending Solutions</p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">What We Provide</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <div class="feature-title">AI-Powered Technology</div>
+                        <p>Advanced machine learning algorithms enable predictive inventory management and intelligent restocking optimization.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <div class="feature-title">Advanced Security</div>
+                        <p>Multi-layered theft prevention with motion sensors, secure door mechanisms, and real-time monitoring systems.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💳</div>
+                        <div class="feature-title">Smart Touch Payment Systems</div>
+                        <p>All machines feature intuitive touchscreen interfaces supporting contactless payments, mobile wallets, and traditional payment methods.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📡</div>
+                        <div class="feature-title">Remote Monitoring</div>
+                        <p>24/7 cloud-based monitoring with real-time inventory tracking, sales analytics, and proactive maintenance alerts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-title">Energy Efficient</div>
+                        <p>ENERGY STAR certified components with smart power management and environmentally conscious operation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛠️</div>
+                        <div class="feature-title">Complete Service Package</div>
+                        <p>Full-service solution including professional installation, customized product selection, regular maintenance, inventory management, and technical support.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p class="highlight-text">🏢 <strong>Resident-Focused Design:</strong> Whisper-quiet operation, enhanced security features, and 24/7 availability ensure optimal resident experience</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Benefits for Your Property</h2>
+                <div class="benefits-section">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✨</span>
+                        <div>
+                            <strong>Premium Amenity:</strong> Enhance your property's appeal with state-of-the-art vending technology that demonstrates commitment to resident convenience and modern living.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎯</span>
+                        <div>
+                            <strong>Zero Management Required:</strong> Our comprehensive service model handles all aspects of operation—installation, inventory management, maintenance, and customer support.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📄</span>
+                        <div>
+                            <strong>Flexible Contract Terms:</strong> Month-to-month agreement with 30-day notice termination. No long-term commitments or upfront costs required.
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💰</span>
+                        <div>
+                            <strong>Revenue Generation:</strong> Generate passive income through our commission structure while providing valuable resident services at no cost to your operation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SERVICE AGREEMENT FORM -->
+            <div class="approval-section">
+                <h2 class="section-title">Request Service Agreement</h2>
+                
+                <div class="success-message" id="successMessage">
+                    ✅ Thank you! Your service agreement request has been submitted successfully. We'll contact you within 1-2 business days to schedule a consultation.
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    ❌ There was an error submitting your form. Please try again or contact us directly at Zorn@zerohourvending.com
+                </div>
+                
+                <form id="vendingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <!-- Property Information -->
+                    <div style="margin-bottom: 32px;">
+                        <h3 style="color: #00d9ff; margin-bottom: 20px;">Property Information</h3>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label class="form-label" for="property_name">Property/Complex Name *</label>
+                            <input type="text" id="property_name" name="property_name" class="form-input" required placeholder="Enter property or complex name">
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <div>
+                                <label class="form-label" for="manager_name">Property Manager Name *</label>
+                                <input type="text" id="manager_name" name="manager_name" class="form-input" required placeholder="Enter manager name">
+                            </div>
+                            <div>
+                                <label class="form-label" for="manager_email">Email Address *</label>
+                                <input type="email" id="manager_email" name="manager_email" class="form-input" required placeholder="Enter email address">
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <div>
+                                <label class="form-label" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter phone number">
+                            </div>
+                            <div>
+                                <label class="form-label" for="date">Date *</label>
+                                <input type="date" id="date" name="date" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label" for="property_address">Property Address *</label>
+                            <textarea id="property_address" name="property_address" class="form-textarea" required placeholder="Enter full address including city, state, and zip code"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Machine Selection -->
+                    <div style="margin-bottom: 32px;">
+                        <h3 style="color: #00d9ff; margin-bottom: 20px;">Machine Selection</h3>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label class="form-label">Machine Design Preference * (Select all that interest you)</label>
+                            <div class="machines-grid" style="margin-top: 16px;">
+                                <div class="machine-option" onclick="toggleSelection(this)">
+                                    <div class="machine-visual" style="background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%); border: 1px solid #94a3b8;">
+                                        <div style="text-align: center; color: #475569;">
+                                            <div style="background: #1e293b; color: white; padding: 8px 16px; border-radius: 4px; margin-bottom: 12px; font-size: 12px; font-weight: 600;">PREMIUM SERIES</div>
+                                            <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; padding: 12px; background: rgba(255,255,255,0.8); border-radius: 4px; margin: 8px;">
+                                                <div style="background: linear-gradient(45deg, #ef4444, #dc2626); height: 10px; border-radius: 2px;"></div>
+                                                <div style="background: linear-gradient(45deg, #3b82f6, #2563eb); height: 10px; border-radius: 2px;"></div>
+                                                <div style="background: linear-gradient(45deg, #eab308, #ca8a04); height: 10px; border-radius: 2px;"></div>
+                                                <div style="background: linear-gradient(45deg, #22c55e, #16a34a); height: 10px; border-radius: 2px;"></div>
+                                                <div style="background: linear-gradient(45deg, #a855f7, #9333ea); height: 10px; border-radius: 2px;"></div>
+                                                <div style="background: linear-gradient(45deg, #06b6d4, #0891b2); height: 10px; border-radius: 2px;"></div>
+                                            </div>
+                                            <div style="font-size: 11px; color: #64748b;">Brushed Steel Finish</div>
+                                        </div>
+                                    </div>
+                                    <div class="machine-name">Stainless Steel Design</div>
+                                    <div style="background: #374151; padding: 12px; border-radius: 6px; margin: 12px 0; border: 1px solid #4b5563;">
+                                        <div style="font-size: 0.85em; color: #9ca3af; font-weight: 500; margin-bottom: 4px;">Overall Dimensions:</div>
+                                        <div style="font-family: 'Inter', monospace; font-size: 0.9em; color: #00d9ff; font-weight: 600;">29.9" W × 29.1" D × 79.5" H</div>
+                                    </div>
+                                    <div class="machine-checkbox">
+                                        <input type="checkbox" id="machine1" name="machine_style" value="Stainless Steel Design">
+                                        <label for="machine1">Select This Model</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="machine-option" onclick="toggleSelection(this)">
